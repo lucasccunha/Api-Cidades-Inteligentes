@@ -50,7 +50,7 @@ public class AgendamentoController {
         return agendamentoService.buscarPeloNomeCliente(nome);
     }
 
-    @GetMapping("/agendamento/{id}")
+    @GetMapping("/agendamento/buscar/id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public AgendamentoExibicaoDto buscarPeloId(@PathVariable Long id) {
         return agendamentoService.buscarPeloId(id);

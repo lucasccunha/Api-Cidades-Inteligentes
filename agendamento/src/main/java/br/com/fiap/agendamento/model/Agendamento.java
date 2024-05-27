@@ -34,42 +34,52 @@ public class Agendamento {
     private String descricao;
 
     public Long getId() {
+
         return id;
     }
 
     public void setId(Long id) {
+
         this.id = id;
     }
 
     public String getNomeCliente() {
+
         return nomeCliente;
     }
 
     public void setNomeCliente(String nomeCliente) {
+
         this.nomeCliente = nomeCliente;
     }
 
     public LocalDate getDataAgendamento() {
+
         return dataAgendamento;
     }
 
     public void setDataAgendamento(LocalDate dataAgendamento) {
+
         this.dataAgendamento = dataAgendamento;
     }
 
     public String getTipoMaterial() {
+
         return tipoMaterial;
     }
 
     public void setTipoMaterial(String tipoMaterial) {
+
         this.tipoMaterial = tipoMaterial;
     }
 
     public String getDescricao() {
+
         return descricao;
     }
 
     public void setDescricao(String descricao) {
+
         this.descricao = descricao;
     }
 
@@ -83,6 +93,7 @@ public class Agendamento {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(id, nomeCliente, dataAgendamento, tipoMaterial, descricao);
     }
 }
