@@ -20,7 +20,7 @@ public record AgendamentoCadastroDto(
         String tipoMaterial,
 
         @NotBlank(message = "Descrição do Material é Obrigatório!")
-                @Size(min=1, max=10, message = "Campo não pode estar Vazio,No maximo 10 caracteres")
+                @Size(min=1, max=20, message = "Campo não pode estar Vazio,No maximo 20 caracteres")
         String descricao
 ) {
 }

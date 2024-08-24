@@ -8,24 +8,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDate;
 import java.util.Objects;
 
-@Document(collection = "tbl_agendamento")
+@Document(collection = "col_agendamento")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class Agendamento {
-
     @Id
     private ObjectId id;
-
     private String nomeCliente;
-
     private LocalDate dataAgendamento;
-
     private String tipoMaterial;
-
     private String descricao;
+    private ObjectId servicoId;
 
     @Override
     public boolean equals(Object o) {

@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
 
-@Document(collection = "tbl_users")
+@Document(collection = "col_users")
 @Getter
 @Setter
 @AllArgsConstructor
