@@ -20,28 +20,28 @@ public class VerificaToken extends OncePerRequestFilter {
 
     @Autowired
     private TokenService tokenService;
-
+//teste
     @Autowired
     private UserRepository usuarioRepository;
 
     @Override
-    protected void doFilterInternal(
-            HttpServletRequest request,
-            HttpServletResponse response,
-            FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+        String authorizationHeader = request.getHeader("Authorization");
+        String token = "";
 
+        if (authorizationHeader == null) {
+            System.out.println("Authorization header is missing");
+            token = null;
+        } else {
+            token = authorizationHeader.replace("Bearer", "").trim();
+            String login = tokenService.validarToken(token);
+            System.out.println("Login from token: " + login);
+            UserDetails usuario = usuarioRepository.findByEmail(login);
 
-            String authorizationHeader = request.getHeader("Authorization");
-            String token = "";
-
-            if (authorizationHeader == null) {
-                token = null;
-            } else {
-                token = authorizationHeader.replace("Bearer", "").trim();
-                String login = tokenService.validarToken(token);
-                UserDetails usuario = usuarioRepository.findByEmail(login);
-
-                System.out.println(usuario.getAuthorities());
+            if (usuario != null) {
+                System.out.println("User found: " + usuario.getUsername());
+                System.out.println("Authorities: " + usuario.getAuthorities());
 
                 UsernamePasswordAuthenticationToken authentication =
                         new UsernamePasswordAuthenticationToken(
@@ -50,11 +50,13 @@ public class VerificaToken extends OncePerRequestFilter {
                                 usuario.getAuthorities()
                         );
                 SecurityContextHolder.getContext().setAuthentication(authentication);
+            } else {
+                System.out.println("Usuário não encontrado ou token inválido");
             }
-            filterChain.doFilter(request, response);
-
-
         }
+        filterChain.doFilter(request, response);
+    }
+}
 
-        }
+
 

@@ -1,24 +1,17 @@
 package br.com.fiap.agendamento.repository;
 
 import br.com.fiap.agendamento.model.Agendamento;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> {
+public interface AgendamentoRepository extends MongoRepository<Agendamento, ObjectId> {
 
-    @Query("SELECT c FROM Agendamento c WHERE c.nomeCliente = :nome")
-    Optional<Agendamento> buscarAgendamentoPeloNome(@Param("nome")String nome);
+    Optional<Agendamento> findByNomeCliente(String nome);
 
-
-
-    @Query("SELECT c FROM Agendamento c WHERE c.dataAgendamento BETWEEN :dataInicial AND :dataFinal")
-    List<Agendamento> listarAgendamentosDoPeriodo(
-            @Param("dataInicial") LocalDate dataInicial,
-            @Param("dataFinal") LocalDate dataFinal
-    );
+    List<Agendamento> findByDataAgendamentoBetween(LocalDate dataInicial, LocalDate dataFinal);
 }
+

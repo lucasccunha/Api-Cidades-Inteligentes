@@ -5,6 +5,7 @@ import br.com.fiap.agendamento.dto.AgendamentoExibicaoDto;
 import br.com.fiap.agendamento.model.Agendamento;
 import br.com.fiap.agendamento.service.AgendamentoService;
 import jakarta.validation.Valid;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -34,7 +35,7 @@ public class AgendamentoController {
 
     @DeleteMapping("/agendamento/id/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void excluir(@PathVariable Long id) {
+    public void excluir(@PathVariable ObjectId id) {
         agendamentoService.excluir(id);
     }
 
@@ -52,7 +53,7 @@ public class AgendamentoController {
 
     @GetMapping("/agendamento/buscar/id/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public AgendamentoExibicaoDto buscarPeloId(@PathVariable Long id) {
+    public AgendamentoExibicaoDto buscarPeloId(@PathVariable ObjectId id) {
         return agendamentoService.buscarPeloId(id);
     }
 
