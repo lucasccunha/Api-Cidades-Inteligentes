@@ -16,4 +16,5 @@ jobs:
                 distribution: 'temurin'
                 java-version: '21'
         -   name: Testes unitarios
+            working-directory: agendamento
             run: mvn test
