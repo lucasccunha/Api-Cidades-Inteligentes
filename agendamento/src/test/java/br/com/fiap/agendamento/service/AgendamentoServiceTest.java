@@ -8,19 +8,16 @@ import org.bson.types.ObjectId;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
 
-import static org.awaitility.Awaitility.given;
-import static org.junit.jupiter.api.Assertions.*;
+
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
-import static org.mockito.Mockito.when;
+
 
 @ExtendWith(MockitoExtension.class)
 class AgendamentoServiceTest {
@@ -47,7 +44,7 @@ class AgendamentoServiceTest {
         agendamentoSalvoMock.setTipoMaterial("Plastico");
         agendamentoSalvoMock.setDescricao("Reciclavel");
 
-        when(agendamentoRepository.save(any(Agendamento.class))).thenReturn(agendamentoSalvoMock);
+        given(agendamentoRepository.save(any(Agendamento.class))).willReturn(agendamentoSalvoMock);
 
         this.dto = new AgendamentoCadastroDto(new ObjectId(), "Fulano", LocalDate.parse("2024-08-24"), "Plastico", "Reciclavel");
 
