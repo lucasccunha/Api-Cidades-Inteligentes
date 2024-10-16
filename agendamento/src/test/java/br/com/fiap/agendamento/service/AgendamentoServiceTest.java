@@ -54,7 +54,7 @@ class AgendamentoServiceTest {
         // ASSERT
         then(agendamentoRepository).should().save(agendamentoCaptor.capture());
         Agendamento agendamentoGravado = agendamentoCaptor.getValue();
-        Assertions.assertEquals("Erro Intencional", agendamentoGravado.getNomeCliente());
+        Assertions.assertEquals("Fulano", agendamentoGravado.getNomeCliente());
         Assertions.assertNotNull(resultado.id());
     }
 
