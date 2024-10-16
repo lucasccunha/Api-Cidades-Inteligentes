@@ -3,11 +3,12 @@ package br.com.fiap.agendamento.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.bson.types.ObjectId;
 
 import java.time.LocalDate;
 
 public record AgendamentoCadastroDto(
-        Long id,
+        ObjectId id,
 
         @NotBlank(message = "Nome do Cliente é Obrigatório!")
         String nomeCliente,
