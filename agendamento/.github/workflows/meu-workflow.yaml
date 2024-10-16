@@ -1,18 +1,19 @@
-name: Meu workflow
-on: push
+name: Continuous Integration
+
+on:
+  push:
+    branches: "feature/**"
 
 jobs:
-  job1-hello:
+  tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Imprimir mensagem
-        run: echo "Olá, Mundo"
-  job2-goodbye:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Step 1 - Sequencia de instruções
-        run: |
-          echo "Uma nova instrução"
-          ls
-      - name: Step 2 - Imprimir mensagem
-        run: echo "Até logo!"
+      -   name: Git Checkout
+          uses: actions/checkout@v4
+      -   name: Setup Java JDk
+          uses: actions/setup-java@v4
+          with:
+            distribution: 'temurin'
+            java-version: '21'
+      -   name: Testes unitarios
+          run: mvn test
