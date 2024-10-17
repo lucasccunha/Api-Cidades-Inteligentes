@@ -20,13 +20,13 @@ jobs:
         with:
           registry: https://index.docker.io/v1/
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}  # Correção aqui
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push container image to registry
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags:  index.docker.io/${{ secrets.DOCKERHUB_USERNAME }}/agendamento-coleta:${{ github.sha }}
+          tags: index.docker.io/${{ secrets.DOCKERHUB_USERNAME }}/agendamento-coleta:${{ github.sha }}
           file: ./Dockerfile
 
   deploy:
@@ -38,7 +38,7 @@ jobs:
 
     steps:
       - name: Deploy to Azure Web App
-        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2  # Certifique-se de estar usando uma ação válida para deploy
         with:
           app-name: 'fiap-agendamento-contato-dev'
           slot-name: 'production'
