@@ -8,7 +8,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/local
+      -  SPRING_DATA_MONGODB_URI=mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${COSMOS_DB_HOST}:10255/<bd-fiap-api-dev>?ssl=true&replicaSet=globaldb
 
   mongo:
     image: mongo:latest
