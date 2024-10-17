@@ -27,7 +27,7 @@ jobs:
         with:
           push: true
           tags: lucas71cunha/agendamento-coleta:${{ github.sha }}
-          file: ./Dockerfile
+          file: ./agendamento/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
