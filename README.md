@@ -26,7 +26,6 @@ A API oferece funcionalidades para gerenciar o agendamento de coletas de recicl�
 - **Spring Boot**: Framework para construção de aplicações Java baseadas em microserviços.
 - **Spring Data JPA**: Para persistência de dados em bancos de dados relacionais.
 - **Spring Security**: Para implementar autenticação e autorização na API.
-- **MongoDB**: Banco de dados NoSQL utilizado para armazenar informações (ou MySQL, se optar pela migração).
 - **Docker**: Para containerização da aplicação, facilitando o deploy e a escalabilidade.
 - **GitHub Actions**: Para automação de CI/CD, garantindo um fluxo de desenvolvimento contínuo.
 
