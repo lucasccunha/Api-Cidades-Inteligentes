@@ -30,12 +30,5 @@ A API oferece funcionalidades para gerenciar o agendamento de coletas de recicl�
 - **Docker**: Para containerização da aplicação, facilitando o deploy e a escalabilidade.
 - **GitHub Actions**: Para automação de CI/CD, garantindo um fluxo de desenvolvimento contínuo.
 
-## Instalação
 
-Siga as instruções abaixo para instalar e configurar a aplicação localmente:
-
-1. **Clone o repositório**
-   ```bash
-   git clone https://github.com/Traderfibonacci/Api-Cidades-Inteligentes.git
-   cd Api-Cidades-Inteligentes
 
